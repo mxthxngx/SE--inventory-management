@@ -1,0 +1,88 @@
+{% extends 'orderDetails.html' %}
+
+{% block content %}
+
+<h2>{% block title %} Update inventory {% endblock %}</h2>
+<script>
+
+
+    var subjectObject = '{{rec|safe}}';
+    console.log(subjectObject)
+    subjectObject = JSON.parse(subjectObject);
+    console.log(subjectObject)
+    window.onload = function() {
+      var subjectSel = document.getElementById("topic");
+      var topicSel = document.getElementById("chapter");
+      for (var x in subjectObject) {
+        console.log("Option = ", x); 
+        subjectSel.options[subjectSel.options.length] = new Option(x, x);
+      }
+      subjectSel.onchange = function() {
+        //empty Chapters- and Topics- dropdowns
+        topicSel.length = 1;
+        //display correct values
+        for (var y in subjectObject[this.value]) {
+
+          topicSel.options[topicSel.options.length] = new Option(subjectObject[this.value][y], subjectObject[this.value][y]);
+        }
+      }
+      topicSel.onchange = function() {
+        //empty Chapters dropdown
+        //display correct values
+        var z = subjectObject[subjectSel.value][this.value];
+        for (var i = 0; i < z.length; i++) {
+        }
+      }
+    }
+    </script>
+
+<form name="form1" id="form1" method="POST" class="form">
+    
+      <br><br>
+    Item name: <select name="item_name" id="topic" class="option">
+        <option value="request.form['item_name']" selected="selected">Please select item name first</option>
+      </select>
+      <br><br>
+    Quantity: <select name="items_available" id="chapter" class = "option">
+        <option value="request.form['items_available']" selected="selected">Please select quantity </option>
+      </select>
+      <br>
+<br>
+    
+    <button type="submit" class="btn btn-primary">Update Item</button> 
+    </form>
+    
+<!--     
+<form method="POST" class="form">
+    
+
+    <div class="form-group">
+        <label for="title">Item Name</label>
+        <input type="text" name="item_name"
+               placeholder="Item Name" class="form-control"
+               value="{{ request.form['item_name']}}" readonly="readonly"></input>
+    </div>
+    
+    <div class="form-group">
+        <label for="title">Quantity Available</label>
+        <input type="number" name="items_available"
+               placeholder="Quantity" class="form-control"
+               value="{{ request.form['items_available'] }}"></input>
+    </div>
+    <div class="form-group">
+        <label for="title">Quantity </label>
+        <input type="number" name="items"
+               placeholder="Quantity" class="form-control"
+               value="{{ request.form['items'] or record['items']}}"  readonly="readonly"></input>
+    </div>
+    <div class="form-group">
+        <label for="title">Action neeeded</label>
+               <select name="item_status" id="item-status" value = "{{ request.form['action_needed'] }}"  readonly="readonly">
+              </select>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+</form> -->
+{% endblock %}
+
