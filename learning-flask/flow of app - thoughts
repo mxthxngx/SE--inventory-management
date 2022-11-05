@@ -1,0 +1,30 @@
+/stock 
+if item_status == delivered
+	then display in the stock.
+	
+
+/billing
+select item and quantity from drop down list. 
+update the sql database.
+
+_
+
+html side:_____________________________________________________
+item_name(from drop down list) quantity(update) 
+_______________________________________________________
+
+
+python side:
+fetch record according to item_name
+
+
+
+for billing: 
+start with only one row of a table, each time the add button is pressed, the row has to increase(first work on the html part of this), each time the add button is pressed, it shud update the database but it shouldnt submit the form, there is also a submit form button.
+
+
+Do later: 
+make a vertical nav bar to take to all the menus
+
+
+soap: [

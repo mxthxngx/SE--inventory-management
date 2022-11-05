@@ -1,0 +1,38 @@
+{% extends 'orderDetails.html' %}
+
+{% block content %}
+<h2>{% block title %} Order Details {% endblock %}</h2>
+<div class="add-buttons">
+    <button class = "add-item"> <a href="{{ url_for('create') }}" style="text-decoration: none;color:aliceblue">+ Add Item</a></button>
+    <button class = "add-item"> <a href="{{ url_for('stock') }}" style="text-decoration: none;color:aliceblue">Check Stock</a></button>
+    <button class = "add-item"> <a href="" style="text-decoration: none;color:aliceblue">Billing</a></button>
+
+
+</div>
+			<tr><th>ID</th>
+            <th>Partner name</th>
+            <th>Delivered from</th>
+            <th>Item Name</th>
+
+            <th>Quantity</th>
+            <th>Status</th>
+            </tr>
+            
+                {% for order in orderdeets %}	
+
+			<tr><td>	<div class="table-data">{{ order['id'] }}</div></td>
+            <td><div class="table-data">{{ order['partner_name'] }}</td></div>
+                	
+			<td><div class="table-data">{{ order['destination'] }}</td></div>
+            <td><div class="table-data">{{ order['item_name'] }}</td></div>
+				<td><div class="table-data">{{ order['items'] }}</td></div>
+                <td><div class="table-data">{{ order['item_status'] }}</div>
+                    <a href="{{ url_for('edit_order', item_name=order['item_name']) }}">
+                        <span class="badge badge-warning">Edit Order</span>
+                    </a>                </td>
+
+            </tr>
+                {% endfor %}
+`
+		
+{% endblock  %}
