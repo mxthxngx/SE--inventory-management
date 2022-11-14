@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Login </title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename= 'css/style.css') }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div id="login-form-wrap">
+  <h2>Login</h2>
+<div class = "box">
+  
+    <form id="login-form" method="POST" >
+        <p>
+        <input type="text" id="username" name="username" placeholder="username" required value="{{ request.form['username'] }}"><i class="validation"><span></span><span></span></i>
+        </p>
+        <p>
+        <input type="password" id="password" name="password" placeholder="password" value="{{ request.form['password'] }}" required><i class="validation"><span></span><span></span></i>
+        </p>
+        <p>
+        <input type="submit" id="login" value="Login">
+        </p>
+      </form>
+<div class ="box-right">
+    <img src="{{ url_for('static', filename= 'images/image.png') }}" alt="Login Page" class = "loginimg">
+</div>
+</div>
+{% block content %}{% endblock %}
+
+</div><!--login-form-wrap-->
+<!-- partial -->
+  
+</body>
+</html>

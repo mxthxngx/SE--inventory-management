@@ -1,0 +1,28 @@
+{% extends 'orderDetails.html' %}
+
+{% block content %}
+<h2>{% block title %} Stock Details {% endblock %}</h2>
+			
+        
+            <th>Item Name</th>
+
+            <th>Available quantity</th>
+            <th>Total quantity</th>
+
+            <th>Status</th>
+            </tr>
+            
+                {% for order in stockdeets %}	
+
+               <tr></tr> 	
+            <td><div class="table-data">{{ order['item_name'] }}</td></div>
+				<td><div class="table-data">{{ order['items_available'] }}</td></div>
+                <td><div class="table-data">{{ order['items_total'] }}</td></div>
+
+                <td><div class="table-data">{{ order['action_needed'] }}</td></div>
+
+            </tr>
+                {% endfor %}
+`
+		
+{% endblock  %}
